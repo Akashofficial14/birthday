@@ -21,7 +21,7 @@
 
 <body>
     <!-- Audio Elements -->
-    <audio id="mainBgm" loop preload="auto" src="./bgm.mpeg"></audio>
+    <audio id="mainBgm" autoplay loop preload="auto" src="./bgm.mpeg"></audio>
     <audio id="galleryBgm" loop preload="auto" src="./kudi nu.mpeg"></audio>
 
     <!-- Floating Music Control Toggle -->
@@ -547,7 +547,6 @@
     const galleryBgm = document.getElementById('galleryBgm');
     const musicToggleBtn = document.getElementById('musicToggleBtn');
     let isMusicMuted = false;
-    let hasInteracted = false;
 
     function playMainBgm() {
         if (isMusicMuted) return;
@@ -556,11 +555,16 @@
             galleryBgm.currentTime = 0;
         }
         if (mainBgm) {
-            mainBgm.play().catch(function (err) {
-                console.log('Autoplay waiting for user gesture:', err);
-            });
+            const playPromise = mainBgm.play();
+            if (playPromise !== undefined) {
+                playPromise.then(function () {
+                    updateMusicButtonUI(true);
+                }).catch(function (err) {
+                    console.log('Autoplay waiting for initial touch/click:', err);
+                    updateMusicButtonUI(false);
+                });
+            }
         }
-        updateMusicButtonUI(true);
     }
 
     function playGalleryBgm() {
@@ -569,9 +573,14 @@
             mainBgm.pause();
         }
         if (galleryBgm) {
-            galleryBgm.play().catch(function (err) {
-                console.log('Gallery audio waiting for gesture:', err);
-            });
+            const playPromise = galleryBgm.play();
+            if (playPromise !== undefined) {
+                playPromise.then(function () {
+                    updateMusicButtonUI(true);
+                }).catch(function (err) {
+                    console.log('Gallery audio waiting for touch/click:', err);
+                });
+            }
         }
         updateMusicButtonUI(true);
     }
@@ -599,7 +608,6 @@
     if (musicToggleBtn) {
         musicToggleBtn.addEventListener('click', function (e) {
             e.stopPropagation();
-            hasInteracted = true;
             if (isMusicMuted || ((mainBgm && mainBgm.paused) && (galleryBgm && galleryBgm.paused))) {
                 isMusicMuted = false;
                 if (galleryModal && galleryModal.classList.contains('active')) {
@@ -614,10 +622,13 @@
         });
     }
 
-    // Start Main BGM on first user interaction anywhere on the screen
-    function startMusicOnFirstInteraction() {
-        if (!hasInteracted && !isMusicMuted) {
-            hasInteracted = true;
+    // Attempt instant play on load and unlock on first touch/click/scroll
+    playMainBgm();
+    window.addEventListener('load', playMainBgm);
+    document.addEventListener('DOMContentLoaded', playMainBgm);
+
+    function startMusicOnMainPageInteraction() {
+        if (!isMusicMuted) {
             if (galleryModal && galleryModal.classList.contains('active')) {
                 playGalleryBgm();
             } else {
@@ -625,9 +636,9 @@
             }
         }
     }
-    document.addEventListener('click', startMusicOnFirstInteraction, { once: true });
-    document.addEventListener('touchstart', startMusicOnFirstInteraction, { once: true });
-    document.addEventListener('keydown', startMusicOnFirstInteraction, { once: true });
+    ['pointerdown', 'touchstart', 'touchend', 'click', 'keydown', 'scroll'].forEach(function (evt) {
+        document.addEventListener(evt, startMusicOnMainPageInteraction, { once: true, passive: true });
+    });
 
     // Special Photo Gallery Modal Controls
     const galleryModal = document.getElementById('specialGalleryModal');
