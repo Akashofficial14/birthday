@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Happy Birthday Website 2.0 | Aoudumber Bade">
+    <meta name="github" content="https://github.com/Aoudumber-Bade">
+    <title>Sapna Birthday</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@500;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <!-- Audio Elements -->
+    <audio id="mainBgm" loop preload="auto" src="./bgm.mpeg"></audio>
+    <audio id="galleryBgm" loop preload="auto" src="./kudi nu.mpeg"></audio>
+
+    <!-- Floating Music Control Toggle -->
+    <button id="musicToggleBtn" class="music-toggle-btn" aria-label="Toggle Music" title="Play/Pause Background Music 🎵">
+        <div class="music-disc-wrapper">
+            <i class="fa-solid fa-music music-note-icon"></i>
+            <span class="music-pulse-ring"></span>
+        </div>
+        <span class="music-btn-text">Music ON</span>
+    </button>
+
+    <div id="wrapper">
+        <div class="flag__birthday">
+            <img src="./images/1.png" alt="" width="350" class="flag__left">
+            <img src="./images/1.png" alt="" width="350" class="flag__right">
+        </div>
+        <div class="content">
+            <div class="left">
+                <div class="title">
+                    <h1 class="happy">
+                        <span style="--t: 4s;">H</span>
+                        <span style="--t: 4.2s;">a</span>
+                        <span style="--t: 4.4s;">p</span>
+                        <span style="--t: 4.6s;">p</span>
+                        <span style="--t: 4.8s;">y</span>
+                    </h1>
+                    <h1 class="birthday">
+                        <span style="--t: 5s;">B</span>
+                        <span style="--t: 5.2s;">i</span>
+                        <span style="--t: 5.4s;">r</span>
+                        <span style="--t: 5.6s;">t</span>
+                        <span style="--t: 5.8s;">h</span>
+                        <span style="--t: 6s;">d</span>
+                        <span style="--t: 6.2s;">a</span>
+                        <span style="--t: 6.4s;">y</span>
+                    </h1>
+                    <div class="hat">
+                        <img src="./images/hat.png" alt="" width="130">
+                    </div>
+                </div>
+                <div class="date__of__birth">
+                    <span></span>
+                </div>
+                <div class="btn">
+                    <button id="btn__letter">
+                        <div class="mail">
+                            <span>Open Birthday Diary <br> 📖✨</span>
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="right">
+                <div class="box__account">
+                    <div class="image">
+                        <img src="../WhatsApp Image 2026-08-24 at 10.40.57 PM.jpeg" alt="">
+                    </div>
+                    <div class="name">
+                        <i class="fa-solid fa-heart"></i>
+                        <span class="text-center">Dear Preetiest Girl</span>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="balloon_one">
+                        <img width="100px" src="./images/balloon1.png" alt="">
+                    </div>
+                    <div class="balloon_two">
+                        <img width="100px" src="./images/balloon2.png" alt="">
+                    </div>
+                </div>
+                <!-- Lovely Birthday Message & Celebration Action Buttons Group -->
+                <div class="photo-interactive-group">
+                    <div class="photo-love-message">
+                        <p>🌸 "Wishing the prettiest girl a day as magical, radiant & lovely as your heart!" ✨💖</p>
+                    </div>
+                    <div class="main-action-buttons">
+                        <button id="btn__showerLove" class="btn-shower-love" title="Shower Love & Floating Hearts">
+                            <i class="fa-solid fa-heart"></i> <span>Shower Love 💕</span>
+                        </button>
+                        <button id="btn__birthdayBlast" class="btn-birthday-blast" title="Trigger Birthday Fireworks Blast! 💥🎉">
+                            <i class="fa-solid fa-burst"></i> <span>Birthday Blast! 💥🎉</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="cricle">
+                    <div class="text__cricle">
+                        <span style="--i: 1;">h</span>
+                        <span style="--i: 2;">a</span>
+                        <span style="--i: 3;">p</span>
+                        <span style="--i: 4;">p</span>
+                        <span style="--i: 5;">y</span>
+                        <span style="--i: 6;">-</span>
+                        <span style="--i: 7;">b</span>
+                        <span style="--i: 8;">i</span>
+                        <span style="--i: 9;">r</span>
+                        <span style="--i: 10;">t</span>
+                        <span style="--i: 11;">h</span>
+                        <span style="--i: 12;">d</span>
+                        <span style="--i: 13;">a</span>
+                        <span style="--i: 14;">y</span>
+                        <span style="--i: 15;">-</span>
+                    </div>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+        </div>
+        <div class="decorate_star star1" style="--t: 15s;"></div>
+        <div class="decorate_star star2" style="--t: 15.2s;"></div>
+        <div class="decorate_star star3" style="--t: 15.4s;"></div>
+        <div class="decorate_star star4" style="--t: 15.6s;"></div>
+        <div class="decorate_star star5" style="--t: 15.8s;"></div>
+        <div class="decorate_flower--one" style="--t: 15s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_flower--two" style="--t: 15.3s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_flower--three" style="--t: 15.6s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_bottom">
+            <img src="./images/decorate.png" alt="" width="100">
+        </div>
+        <div class="smiley__icon">
+            <img src="./images/smiley_icon.png" alt="" width="100">
+        </div>
+
+        <!-- 4-Page Interactive Birthday Diary -->
+        <div class="boxMail" id="birthdayDiaryModal">
+            <button class="diary-close-btn" id="closeDiaryBtn" aria-label="Close Diary">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="diary-backdrop"></div>
+
+            <div class="diary-container">
+                <div class="diary-card">
+                    <!-- Ribbon Bookmark -->
+                    <div class="diary-ribbon">
+                        <span class="ribbon-tail"></span>
+                    </div>
+
+                    <!-- Diary Top Navigation Tabs -->
+                    <div class="diary-tabs">
+                        <button class="diary-tab active" data-page="1">
+                            <i class="fa-solid fa-cake-candles"></i> <span>Page 1: Wish</span>
+                        </button>
+                        <button class="diary-tab" data-page="2">
+                            <i class="fa-solid fa-heart"></i> <span>Page 2: From Me</span>
+                        </button>
+                        <button class="diary-tab" data-page="3">
+                            <i class="fa-solid fa-people-roof"></i> <span>Page 3: From Family</span>
+                        </button>
+                        <button class="diary-tab" data-page="4">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Page 4: Blessings</span>
+                        </button>
+                    </div>
+
+                    <!-- Diary Pages Wrapper -->
+                    <div class="diary-pages-wrapper">
+                        <!-- PAGE 1: Birthday Celebration & Sweetest Girl Wish -->
+                        <div class="diary-page active" id="diaryPage1" data-page="1">
+                            <div class="diary-page-header">
+                                <span class="page-badge"><i class="fa-solid fa-book-bookmark"></i> Page 1 of 4</span>
+                                <span class="page-category">🎂 Birthday Celebration</span>
+                            </div>
+                            <div class="diary-page-content">
+                                <div class="diary-hero">
+                                    <div class="avatar-glow">
+                                        <img src="../WhatsApp Image 2026-08-24 at 10.40.56 PM (1).jpeg"
+                                            alt="Sweetest Girl" class="diary-avatar">
+                                        <div class="crown-badge">👑</div>
+                                    </div>
+                                    <div class="diary-heading-group">
+                                        <h2 class="diary-title">Happiest Birthday to the Sweetest Girl! 💖✨</h2>
+                                        <p class="diary-subtitle">"Some souls just radiate pure sunshine and warmth
+                                            wherever they go."</p>
+                                    </div>
+                                </div>
+
+                                <div class="diary-body-text">
+                                    <p>Today is a truly magical day because we get to celebrate <strong>the sweetest,
+                                            most precious, and kindest girl</strong> in our entire family! 🌸 From the
+                                        radiant warmth of your smile to the gentle grace in everything you do, you bring
+                                        endless joy into our world.</p>
+                                    <p>You make the ordinary moments extraordinary, turn frowns into laughter, and fill
+                                        every room you enter with vibrant positivity and love. Having you in our lives
+                                        is a blessing we silently thank God for every single day.</p>
+                                    <p>As you celebrate turning a year more wonderful, may today bring you boundless
+                                        excitement, wonderful surprises, and all the love you so generously give to
+                                        everyone around you! 🎂🥳💕</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PAGE 2: Warm Note From Me (Personal Side) -->
+                        <div class="diary-page" id="diaryPage2" data-page="2">
+                            <div class="diary-page-header">
+                                <span class="page-badge"><i class="fa-solid fa-heart"></i> Page 2 of 4</span>
+                                <span class="page-category">💌 Straight From My Heart</span>
+                            </div>
+                            <div class="diary-page-content">
+                                <div class="diary-hero">
+                                    <div class="avatar-glow">
+                                        <img src="../WhatsApp Image 2026-08-24 at 10.37.45 PM.jpeg" alt="Special Memory"
+                                            class="diary-avatar photo-top" style="object-position: top center;">
+                                        <div class="crown-badge">💖</div>
+                                    </div>
+                                    <div class="diary-heading-group">
+                                        <h2 class="diary-title">A Warm & Loving Note From Me 🌸</h2>
+                                        <p class="diary-subtitle">"A special bond built on deep trust, care, and
+                                            unconditional support."</p>
+                                    </div>
+                                </div>
+
+                                <div class="diary-body-text">
+                                    <p>Having you in my life is one of the greatest treasures I will forever cherish.
+                                        Your heart is so pure, your innocence is rare, and your strength in overcoming
+                                        challenges inspires me more than you could ever know.</p>
+                                    <p>Whenever you smile, everything feels peaceful and bright. I want you to know that
+                                        no matter where life leads us, through every triumph, every doubt, or every
+                                        storm, <strong>I am always right here by your side</strong>. You will never have
+                                        to face anything alone—I will always be your safe space, your listener, and your
+                                        biggest cheerleader.</p>
+                                    <p>Never let the world dim your sparkling spirit. You are uniquely gifted, deeply
+                                        cherished, and meant for greatness. I hope all your sweetest dreams come true
+                                        this year! 💕✨</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PAGE 3: Warm Message From Our Entire Family -->
+                        <div class="diary-page" id="diaryPage3" data-page="3">
+                            <div class="diary-page-header">
+                                <span class="page-badge"><i class="fa-solid fa-people-roof"></i> Page 3 of 4</span>
+                                <span class="page-category">🏡 From Our Whole Family</span>
+                            </div>
+                            <div class="diary-page-content">
+                                <div class="diary-hero">
+                                    <div class="avatar-glow family-glow">
+                                        <img src="../family.jpeg" alt="Our Lovely Family"
+                                            class="diary-avatar family-avatar">
+                                        <div class="crown-badge">🏡</div>
+                                    </div>
+                                    <div class="diary-heading-group">
+                                        <h2 class="diary-title">With Boundless Love From Our Family 💐</h2>
+                                        <p class="diary-subtitle">"The pride, heartbeat, and dearest princess of our
+                                            entire home."</p>
+                                    </div>
+                                </div>
+
+                                <div class="diary-body-text">
+                                    <p>To our dearest sweetheart: there are not enough words to capture just how
+                                        profoundly proud our whole family is of you! You are truly the heartbeat and the
+                                        brightest star of our home.</p>
+                                    <p>Your respectful manners, your caring attitude toward every family member, and the
+                                        soft warmth you bring into every conversation make everyone adore you. You have
+                                        a special place in all our hearts that nobody else could ever fill.</p>
+                                    <p>Today, every single member of our family gathers in spirit to wrap you in our
+                                        warmest hugs, our sincerest blessings, and our deepest love. We promise to
+                                        always support you, protect your infectious smile, and celebrate you every
+                                        single day! 🏡💖✨</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PAGE 4: Duas, Blessings & Golden Wishes (Finale) -->
+                        <div class="diary-page" id="diaryPage4" data-page="4">
+                            <div class="diary-page-header">
+                                <span class="page-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Page 4 of
+                                    4</span>
+                                <span class="page-category">🌟 Duas & Golden Wishes</span>
+                            </div>
+                            <div class="diary-page-content">
+                                <div class="diary-hero">
+                                    <div class="avatar-glow">
+                                        <img src="../WhatsApp Image 2026-08-24 at 10.40.56 PM (2).jpeg"
+                                            alt="Blessings & Wishes" class="diary-avatar">
+                                        <div class="crown-badge">🌸</div>
+                                    </div>
+                                    <div class="diary-heading-group">
+                                        <h2 class="diary-title">May All Your Prayers & Hopes Blossom 🌈🕊️</h2>
+                                        <p class="diary-subtitle">"May your journey ahead be as kind, sweet, and
+                                            beautiful as your soul."</p>
+                                    </div>
+                                </div>
+
+                                <div class="diary-body-text">
+                                    <p>As you blow out your birthday candles, our hearts unite in praying for you: May
+                                        the Almighty bless you with vibrant health, serene peace of mind, unending
+                                        prosperity, and grand success in everything you set your heart upon.</p>
+                                    <p>May life always reward your sweet kindness with the very best blessings. May
+                                        every tear you ever shed be tears of overwhelming joy, and may every silent
+                                        prayer in your heart be granted in the most beautiful way.</p>
+                                    <p class="diary-signature">Always keep smiling, stay the sweet loving angel you are,
+                                        and have the most unforgettable and happiest birthday ever! 🥳🎂🎉</p>
+                                </div>
+
+                                <div class="diary-celebrate-action">
+                                    <button id="celebrateConfettiBtn" class="celebrate-btn">
+                                        <i class="fa-solid fa-wand-magic-sparkles"></i> Shower Love & Confetti! 🎊
+                                    </button>
+                                    <button id="openGalleryFromDiaryBtn" class="gallery-trigger-btn">
+                                        <i class="fa-solid fa-camera-retro"></i> Birthday Photo Dump 📸✨
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diary Bottom Navigation Bar -->
+                    <div class="diary-footer">
+                        <button class="nav-btn prev-btn" id="diaryPrevBtn" disabled>
+                            <i class="fa-solid fa-chevron-left"></i> Previous
+                        </button>
+
+                        <div class="diary-page-indicator">
+                            <span class="page-dot active" data-page="1" title="Page 1"></span>
+                            <span class="page-dot" data-page="2" title="Page 2"></span>
+                            <span class="page-dot" data-page="3" title="Page 3"></span>
+                            <span class="page-dot" data-page="4" title="Page 4"></span>
+                        </div>
+
+                        <button class="nav-btn next-btn" id="diaryNextBtn">
+                            Next <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Photo Collection Modal -->
+        <div class="boxMail special-gallery-modal" id="specialGalleryModal">
+            <button class="diary-close-btn" id="closeGalleryBtn" aria-label="Close Gallery">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="diary-backdrop" id="galleryBackdrop"></div>
+
+            <div class="gallery-container">
+                <div class="gallery-card">
+                    <!-- Gallery Header -->
+                    <div class="gallery-header">
+                        <h2 class="gallery-main-title">📸 Birthday Photo Dump 💖✨</h2>
+                        <p class="gallery-sub-title">🌸 Wishing you the happiest birthday full of smiles, love & magic!
+                            🎂✨</p>
+                    </div>
+
+                    <!-- Photo Collection Grid -->
+                    <div class="gallery-grid">
+                        <!-- Photo 1: Radiant -->
+                        <div class="photo-card">
+                            <div class="photo-frame">
+                                <img src="./p/WhatsApp Image 2026-08-24 at 11.21.15 PM.jpeg" alt="Radiant">
+                                <button class="card-heart-btn" title="Love this picture!"><i
+                                        class="fa-solid fa-heart"></i></button>
+                            </div>
+                            <div class="photo-card-info">
+                                <p class="photo-word">Radiant ✨</p>
+                            </div>
+                        </div>
+
+                        <!-- Photo 2: Graceful -->
+                        <div class="photo-card">
+                            <div class="photo-frame">
+                                <img src="./p/WhatsApp Image 2026-08-24 at 11.21.15 PM (1).jpeg" alt="Graceful">
+                                <button class="card-heart-btn" title="Love this picture!"><i
+                                        class="fa-solid fa-heart"></i></button>
+                            </div>
+                            <div class="photo-card-info">
+                                <p class="photo-word">Graceful 🌸</p>
+                            </div>
+                        </div>
+
+                        <!-- Photo 3: Precious -->
+                        <div class="photo-card">
+                            <div class="photo-frame">
+                                <img src="./p/WhatsApp Image 2026-08-24 at 11.21.15 PM (2).jpeg" alt="Precious">
+                                <button class="card-heart-btn" title="Love this picture!"><i
+                                        class="fa-solid fa-heart"></i></button>
+                            </div>
+                            <div class="photo-card-info">
+                                <p class="photo-word">Precious 💎</p>
+                            </div>
+                        </div>
+
+                        <!-- Photo 4: Adorable -->
+                        <div class="photo-card">
+                            <div class="photo-frame">
+                                <img src="./p/WhatsApp Image 2026-08-24 at 11.21.17 PM.jpeg" alt="Adorable">
+                                <button class="card-heart-btn" title="Love this picture!"><i
+                                        class="fa-solid fa-heart"></i></button>
+                            </div>
+                            <div class="photo-card-info">
+                                <p class="photo-word">Adorable 💖</p>
+                            </div>
+                        </div>
+
+                        <!-- Photo 5: Charming -->
+                        <div class="photo-card">
+                            <div class="photo-frame">
+                                <img src="./p/WhatsApp Image 2026-08-24 at 11.21.17 PM (1).jpeg" alt="Charming">
+                                <button class="card-heart-btn" title="Love this picture!"><i
+                                        class="fa-solid fa-heart"></i></button>
+                            </div>
+                            <div class="photo-card-info">
+                                <p class="photo-word">Charming 🌟</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Footer Action -->
+                    <div class="gallery-footer-bar">
+                        <button class="gallery-action-btn back-diary-btn" id="backToDiaryBtn">
+                            <i class="fa-solid fa-book-open"></i> Back to Diary
+                        </button>
+                        <button class="gallery-action-btn confetti-gallery-btn" id="galleryShowerLoveBtn">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Shower More Love & Confetti! 🎊
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    // Date of Birth typewriter
+    let datetxt = "25 Aug";
+    let charArrDate = datetxt.split('');
+    let currentIndex = 0;
+    let date__of__birth = document.querySelector(".date__of__birth span");
+
+    setTimeout(function () {
+        let timeDatetxt = setInterval(function () {
+            if (currentIndex < charArrDate.length) {
+                date__of__birth.textContent += charArrDate[currentIndex];
+                currentIndex++;
+            } else {
+                let i = document.createElement("i");
+                i.className = "fa-solid fa-star";
+                document.querySelector(".date__of__birth").prepend(i);
+                document.querySelector(".date__of__birth").appendChild(i.cloneNode(true));
+                clearInterval(timeDatetxt);
+            }
+        }, 100);
+    }, 1200);
+
+    // Diary Modal & Multi-Page Navigation System
+    const diaryModal = document.getElementById('birthdayDiaryModal');
+    const openBtn = document.getElementById('btn__letter');
+    const closeBtn = document.getElementById('closeDiaryBtn');
+    const backdrop = document.querySelector('.diary-backdrop');
+
+    const pages = document.querySelectorAll('.diary-page');
+    const tabs = document.querySelectorAll('.diary-tab');
+    const dots = document.querySelectorAll('.page-dot');
+    const prevBtn = document.getElementById('diaryPrevBtn');
+    const nextBtn = document.getElementById('diaryNextBtn');
+    const confettiBtn = document.getElementById('celebrateConfettiBtn');
+
+    let currentPage = 1;
+    const totalPages = 4;
+
+    function openDiary() {
+        diaryModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        goToPage(1);
+        playMainBgm();
+        fireGentleConfetti();
+    }
+
+    function closeDiary() {
+        diaryModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function goToPage(pageNum) {
+        if (pageNum < 1 || pageNum > totalPages) return;
+        currentPage = pageNum;
+
+        // Update Pages
+        pages.forEach((page) => {
+            const pageIndex = parseInt(page.getAttribute('data-page'));
+            if (pageIndex === currentPage) {
+                page.classList.add('active');
+                page.scrollTop = 0;
+            } else {
+                page.classList.remove('active');
+            }
+        });
+
+        // Update Tabs
+        tabs.forEach((tab) => {
+            const tabIndex = parseInt(tab.getAttribute('data-page'));
+            if (tabIndex === currentPage) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+
+        // Update Dots
+        dots.forEach((dot) => {
+            const dotIndex = parseInt(dot.getAttribute('data-page'));
+            if (dotIndex === currentPage) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+
+        // Update Prev / Next buttons state
+        prevBtn.disabled = (currentPage === 1);
+        nextBtn.disabled = (currentPage === totalPages);
+
+        if (currentPage === totalPages) {
+            nextBtn.innerHTML = 'Photo Dump 📸✨';
+        } else {
+            nextBtn.innerHTML = 'Next <i class="fa-solid fa-chevron-right"></i>';
+        }
+    }
+
+    // Audio Player State & Smart Switching
+    const mainBgm = document.getElementById('mainBgm');
+    const galleryBgm = document.getElementById('galleryBgm');
+    const musicToggleBtn = document.getElementById('musicToggleBtn');
+    let isMusicMuted = false;
+    let hasInteracted = false;
+
+    function playMainBgm() {
+        if (isMusicMuted) return;
+        if (galleryBgm) {
+            galleryBgm.pause();
+            galleryBgm.currentTime = 0;
+        }
+        if (mainBgm) {
+            mainBgm.play().catch(function (err) {
+                console.log('Autoplay waiting for user gesture:', err);
+            });
+        }
+        updateMusicButtonUI(true);
+    }
+
+    function playGalleryBgm() {
+        if (isMusicMuted) return;
+        if (mainBgm) {
+            mainBgm.pause();
+        }
+        if (galleryBgm) {
+            galleryBgm.play().catch(function (err) {
+                console.log('Gallery audio waiting for gesture:', err);
+            });
+        }
+        updateMusicButtonUI(true);
+    }
+
+    function pauseAllMusic() {
+        if (mainBgm) mainBgm.pause();
+        if (galleryBgm) galleryBgm.pause();
+        updateMusicButtonUI(false);
+    }
+
+    function updateMusicButtonUI(isPlaying) {
+        if (!musicToggleBtn) return;
+        if (isPlaying && !isMusicMuted) {
+            musicToggleBtn.classList.add('playing');
+            musicToggleBtn.classList.remove('muted');
+            musicToggleBtn.querySelector('.music-btn-text').textContent = 'Music ON';
+        } else {
+            musicToggleBtn.classList.remove('playing');
+            musicToggleBtn.classList.add('muted');
+            musicToggleBtn.querySelector('.music-btn-text').textContent = 'Music OFF';
+        }
+    }
+
+    // Toggle Music button click
+    if (musicToggleBtn) {
+        musicToggleBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            hasInteracted = true;
+            if (isMusicMuted || ((mainBgm && mainBgm.paused) && (galleryBgm && galleryBgm.paused))) {
+                isMusicMuted = false;
+                if (galleryModal && galleryModal.classList.contains('active')) {
+                    playGalleryBgm();
+                } else {
+                    playMainBgm();
+                }
+            } else {
+                isMusicMuted = true;
+                pauseAllMusic();
+            }
+        });
+    }
+
+    // Start Main BGM on first user interaction anywhere on the screen
+    function startMusicOnFirstInteraction() {
+        if (!hasInteracted && !isMusicMuted) {
+            hasInteracted = true;
+            if (galleryModal && galleryModal.classList.contains('active')) {
+                playGalleryBgm();
+            } else {
+                playMainBgm();
+            }
+        }
+    }
+    document.addEventListener('click', startMusicOnFirstInteraction, { once: true });
+    document.addEventListener('touchstart', startMusicOnFirstInteraction, { once: true });
+    document.addEventListener('keydown', startMusicOnFirstInteraction, { once: true });
+
+    // Special Photo Gallery Modal Controls
+    const galleryModal = document.getElementById('specialGalleryModal');
+    const openGalleryFromDiaryBtn = document.getElementById('openGalleryFromDiaryBtn');
+    const closeGalleryBtn = document.getElementById('closeGalleryBtn');
+    const galleryBackdrop = document.getElementById('galleryBackdrop');
+    const backToDiaryBtn = document.getElementById('backToDiaryBtn');
+    const galleryShowerLoveBtn = document.getElementById('galleryShowerLoveBtn');
+
+    function openSpecialGallery() {
+        if (diaryModal) diaryModal.classList.remove('active');
+        galleryModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        playGalleryBgm();
+        fireCelebrationBurst();
+    }
+
+    function closeSpecialGallery() {
+        galleryModal.classList.remove('active');
+        document.body.style.overflow = '';
+        playMainBgm();
+    }
+
+    if (openGalleryFromDiaryBtn) {
+        openGalleryFromDiaryBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            openSpecialGallery();
+        });
+    }
+
+    if (closeGalleryBtn) {
+        closeGalleryBtn.addEventListener('click', closeSpecialGallery);
+    }
+
+    if (galleryBackdrop) {
+        galleryBackdrop.addEventListener('click', closeSpecialGallery);
+    }
+
+    if (backToDiaryBtn) {
+        backToDiaryBtn.addEventListener('click', function () {
+            closeSpecialGallery();
+            openDiary();
+            goToPage(4);
+        });
+    }
+
+    if (galleryShowerLoveBtn) {
+        galleryShowerLoveBtn.addEventListener('click', function () {
+            fireCelebrationBurst();
+            createFloatingHearts();
+        });
+    }
+
+    // Photo card heart likes
+    document.querySelectorAll('.card-heart-btn').forEach((btn) => {
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            this.classList.add('liked');
+            this.innerHTML = '<i class="fa-solid fa-heart" style="color: #e63956;"></i>';
+            fireGentleConfetti();
+            createFloatingHearts();
+        });
+    });
+
+    // Event Listeners
+    if (openBtn) {
+        openBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            openDiary();
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeDiary);
+    }
+
+    if (backdrop) {
+        backdrop.addEventListener('click', closeDiary);
+    }
+
+    // Tab buttons
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', function () {
+            const targetPage = parseInt(this.getAttribute('data-page'));
+            goToPage(targetPage);
+        });
+    });
+
+    // Dot indicators
+    dots.forEach((dot) => {
+        dot.addEventListener('click', function () {
+            const targetPage = parseInt(this.getAttribute('data-page'));
+            goToPage(targetPage);
+        });
+    });
+
+    // Prev / Next buttons
+    prevBtn.addEventListener('click', function () {
+        if (currentPage > 1) {
+            goToPage(currentPage - 1);
+        }
+    });
+
+    nextBtn.addEventListener('click', function () {
+        if (currentPage < totalPages) {
+            goToPage(currentPage + 1);
+        } else {
+            // Trigger gallery on last page
+            openSpecialGallery();
+        }
+    });
+
+    // Confetti celebration button
+    if (confettiBtn) {
+        confettiBtn.addEventListener('click', function () {
+            fireCelebrationBurst();
+        });
+    }
+
+    // Keyboard navigation (Arrow keys & Escape)
+    document.addEventListener('keydown', function (e) {
+        if (galleryModal && galleryModal.classList.contains('active') && e.key === 'Escape') {
+            closeSpecialGallery();
+            return;
+        }
+        if (!diaryModal.classList.contains('active')) return;
+        if (e.key === 'ArrowRight' || e.key === 'Right') {
+            if (currentPage < totalPages) goToPage(currentPage + 1);
+            else openSpecialGallery();
+        } else if (e.key === 'ArrowLeft' || e.key === 'Left') {
+            if (currentPage > 1) goToPage(currentPage - 1);
+        } else if (e.key === 'Escape') {
+            closeDiary();
+        }
+    });
+
+    // Birthday Fireworks Blast Button & Sound Synthesis
+    const blastBtn = document.getElementById('btn__birthdayBlast');
+
+    function playBlastSound() {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // Explosion noise generator
+            const bufferSize = ctx.sampleRate * 0.6;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.09));
+            }
+            
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+            
+            // Low-pass filter for thunderous explosion boom
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(900, ctx.currentTime);
+            filter.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.55);
+            
+            const noiseGain = ctx.createGain();
+            noiseGain.gain.setValueAtTime(1.4, ctx.currentTime);
+            noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.55);
+            
+            noise.connect(filter);
+            filter.connect(noiseGain);
+            noiseGain.connect(ctx.destination);
+            
+            // Low sub-bass frequency boom
+            const osc = ctx.createOscillator();
+            const oscGain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(160, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(25, ctx.currentTime + 0.45);
+            
+            oscGain.gain.setValueAtTime(1.2, ctx.currentTime);
+            oscGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+            
+            osc.connect(oscGain);
+            oscGain.connect(ctx.destination);
+            
+            noise.start();
+            osc.start();
+            osc.stop(ctx.currentTime + 0.6);
+        } catch (e) {
+            console.log('AudioContext blast sound:', e);
+        }
+    }
+
+    function triggerBirthdayBlast() {
+        playBlastSound();
+        fireCelebrationBurst();
+        createBlastConfettiFireworks();
+    }
+
+    if (blastBtn) {
+        blastBtn.addEventListener('click', function () {
+            triggerBirthdayBlast();
+        });
+    }
+
+    function createBlastConfettiFireworks() {
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 120,
+                spread: 100,
+                origin: { y: 0.5, x: 0.5 },
+                colors: ['#ff0844', '#ffb199', '#ffd166', '#a29bfe', '#ff477e', '#00f2fe']
+            });
+            confetti({
+                particleCount: 80,
+                angle: 60,
+                spread: 80,
+                origin: { x: 0, y: 0.6 },
+                colors: ['#ff0844', '#ff758c', '#ffd166', '#a29bfe']
+            });
+            confetti({
+                particleCount: 80,
+                angle: 120,
+                spread: 80,
+                origin: { x: 1, y: 0.6 },
+                colors: ['#ff0844', '#ff758c', '#ffd166', '#a29bfe']
+            });
+        }
+        
+        const blastEmojis = ['💥', '💣', '🎉', '✨', '🎆', '🥳', '💖', '⭐'];
+        for (let i = 0; i < 28; i++) {
+            setTimeout(function () {
+                const heart = document.createElement('div');
+                heart.className = 'main-floating-heart';
+                heart.textContent = blastEmojis[Math.floor(Math.random() * blastEmojis.length)];
+                heart.style.left = (Math.random() * 90 + 5) + 'vw';
+                heart.style.bottom = '-30px';
+                heart.style.fontSize = (Math.random() * 24 + 22) + 'px';
+                heart.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
+                document.body.appendChild(heart);
+
+                setTimeout(function () {
+                    heart.remove();
+                }, 5000);
+            }, i * 70);
+        }
+    }
+
+    // Main Page Shower Love & Animation Completion Trigger
+    const showerLoveBtn = document.getElementById('btn__showerLove');
+    const mainImage = document.querySelector('.content .right .image');
+
+    if (showerLoveBtn) {
+        showerLoveBtn.addEventListener('click', function () {
+            showerLoveCelebration();
+        });
+    }
+
+    if (mainImage) {
+        mainImage.style.cursor = 'pointer';
+        mainImage.setAttribute('title', 'Click to Shower Love! 💕');
+        mainImage.addEventListener('click', function () {
+            showerLoveCelebration();
+        });
+    }
+
+    // Automatically trigger Birthday Blast & Shower Love when main photo arrives (~15.5s)
+    setTimeout(function () {
+        triggerBirthdayBlast();
+        showerLoveCelebration();
+    }, 15500);
+
+    // Floating Hearts and Confetti Burst Helper
+    function showerLoveCelebration() {
+        // Confetti Fireworks from left and right
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 80,
+                angle: 60,
+                spread: 70,
+                origin: { x: 0, y: 0.7 },
+                colors: ['#ff4d6d', '#ff758c', '#ffd166', '#a29bfe', '#ff9ff3']
+            });
+            confetti({
+                particleCount: 80,
+                angle: 120,
+                spread: 70,
+                origin: { x: 1, y: 0.7 },
+                colors: ['#ff4d6d', '#ff758c', '#ffd166', '#a29bfe', '#ff9ff3']
+            });
+        }
+
+        // Spawn Floating Heart Particles
+        createFloatingHearts();
+    }
+
+    function createFloatingHearts() {
+        const hearts = ['💖', '💕', '✨', '🌸', '🎂', '🥳', '💗', '⭐'];
+        for (let i = 0; i < 24; i++) {
+            setTimeout(function () {
+                const heart = document.createElement('div');
+                heart.className = 'main-floating-heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = (Math.random() * 90 + 5) + 'vw';
+                heart.style.bottom = '-30px';
+                heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(heart);
+
+                setTimeout(function () {
+                    heart.remove();
+                }, 5000);
+            }, i * 90);
+        }
+    }
+
+    // Confetti Effects helper
+    function fireGentleConfetti() {
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 50,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff758c', '#ff7eb3', '#ffd166', '#a29bfe', '#ff9ff3']
+            });
+        }
+    }
+
+    function fireCelebrationBurst() {
+        if (typeof confetti === 'function') {
+            const count = 200;
+            const defaults = {
+                origin: { y: 0.7 }
+            };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
+            }
+
+            fire(0.25, {
+                spread: 26,
+                startVelocity: 55,
+                colors: ['#ff4d6d', '#ff758c', '#ffd166']
+            });
+            fire(0.2, {
+                spread: 60,
+                colors: ['#a29bfe', '#fd79a8', '#ffeaa7']
+            });
+            fire(0.35, {
+                spread: 100,
+                decay: 0.91,
+                scalar: 0.8
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 25,
+                decay: 0.92,
+                scalar: 1.2
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 45,
+            });
+        }
+    }
+</script>
+
+</html>
